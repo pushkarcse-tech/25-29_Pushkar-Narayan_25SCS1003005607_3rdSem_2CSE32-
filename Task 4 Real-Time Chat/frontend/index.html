@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Real-Time Chat</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         AUTH SCREEN
+    ========================== -->
+
+    <div id="auth-screen" class="auth-screen">
+
+        <div class="auth-card">
+
+            <h1>Real-Time Chat</h1>
+
+            <p class="auth-subtitle">
+                Connect and chat instantly
+            </p>
+
+
+            <!-- LOGIN -->
+
+            <div id="login-form">
+
+                <h2>Welcome Back</h2>
+
+                <input
+                    type="email"
+                    id="login-email"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="login-password"
+                    placeholder="Password"
+                    required
+                >
+
+                <button id="login-btn">
+                    Login
+                </button>
+
+                <p id="login-message" class="auth-message"></p>
+
+                <p class="switch-auth">
+                    Don't have an account?
+                    <button id="show-register">
+                        Register
+                    </button>
+                </p>
+
+            </div>
+
+
+            <!-- REGISTER -->
+
+            <div id="register-form" class="hidden">
+
+                <h2>Create Account</h2>
+
+                <input
+                    type="text"
+                    id="register-username"
+                    placeholder="Username"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="register-email"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="register-password"
+                    placeholder="Password"
+                    required
+                >
+
+                <button id="register-btn">
+                    Register
+                </button>
+
+                <p id="register-message" class="auth-message"></p>
+
+                <p class="switch-auth">
+                    Already have an account?
+                    <button id="show-login">
+                        Login
+                    </button>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CHAT SCREEN
+    ========================== -->
+
+    <div id="chat-screen" class="chat-container hidden">
+
+        <header class="chat-header">
+
+            <div>
+                <h1>Real-Time Chat</h1>
+
+                <p>
+                    Room: <strong>General</strong>
+                </p>
+            </div>
+
+            <div class="user-info">
+
+                <span id="current-user">
+                    Guest
+                </span>
+
+                <button id="logout-btn">
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <div class="chat-box">
+
+            <div id="messages" class="messages">
+                <!-- Messages appear here -->
+            </div>
+
+
+            <form
+                id="message-form"
+                class="message-form"
+            >
+
+                <input
+                    type="text"
+                    id="message-input"
+                    placeholder="Type a message..."
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">
+                    Send
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- Socket.IO -->
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+
+    <!-- Application JavaScript -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

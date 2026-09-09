@@ -1,0 +1,406 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+}
+
+
+/* =========================
+   UTILITY
+========================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   AUTH SCREEN
+========================= */
+
+.auth-screen {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #4f46e5,
+        #7c3aed
+    );
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.auth-card > h1 {
+    text-align: center;
+
+    color: #4f46e5;
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    text-align: center;
+
+    color: #6b7280;
+
+    margin-bottom: 30px;
+}
+
+.auth-card h2 {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.auth-card input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin-bottom: 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.auth-card input:focus {
+    border-color: #4f46e5;
+}
+
+.auth-card > div:not(.hidden) > button:not(.switch-auth button) {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #4f46e5;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.auth-card > div:not(.hidden) > button:not(.switch-auth button):hover {
+    background: #4338ca;
+}
+
+.switch-auth {
+    text-align: center;
+
+    margin-top: 18px;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+.switch-auth button {
+    border: none;
+
+    background: none;
+
+    color: #4f46e5;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.switch-auth button:hover {
+    text-decoration: underline;
+}
+
+.auth-message {
+    text-align: center;
+
+    min-height: 20px;
+
+    margin-top: 12px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   CHAT CONTAINER
+========================= */
+
+.chat-container {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 30px auto;
+
+    background: white;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   CHAT HEADER
+========================= */
+
+.chat-header {
+    background: linear-gradient(
+        135deg,
+        #4f46e5,
+        #7c3aed
+    );
+
+    color: white;
+
+    padding: 22px 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.chat-header h1 {
+    font-size: 28px;
+
+    margin-bottom: 6px;
+}
+
+.chat-header p {
+    font-size: 14px;
+}
+
+.user-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+#current-user {
+    font-weight: bold;
+}
+
+#logout-btn {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    background: rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    padding: 8px 13px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+#logout-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================
+   CHAT BOX
+========================= */
+
+.chat-box {
+    padding: 20px;
+}
+
+.messages {
+    height: 500px;
+
+    overflow-y: auto;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    padding: 18px;
+
+    background: #f9fafb;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+.message {
+    background: #4f46e5;
+
+    color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+
+    max-width: 75%;
+
+    word-wrap: break-word;
+}
+
+.message strong {
+    font-size: 14px;
+}
+
+.message small {
+    display: block;
+
+    margin-top: 5px;
+
+    opacity: 0.75;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   MESSAGE FORM
+========================= */
+
+.message-form {
+    display: flex;
+
+    gap: 10px;
+}
+
+.message-form input {
+    flex: 1;
+
+    padding: 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.message-form input:focus {
+    border-color: #4f46e5;
+}
+
+.message-form button {
+    padding: 14px 25px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #4f46e5;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.message-form button:hover {
+    background: #4338ca;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 600px) {
+
+    .auth-card {
+        padding: 25px;
+    }
+
+    .chat-container {
+        margin: 0;
+
+        min-height: 100vh;
+
+        border-radius: 0;
+    }
+
+    .chat-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .user-info {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+    .messages {
+        height: 430px;
+    }
+
+    .message-form {
+        flex-direction: column;
+    }
+
+    .message-form button {
+        width: 100%;
+    }
+}

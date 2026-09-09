@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Employee Management System</h1>
+            <p>Manage employee records efficiently</p>
+        </header>
+
+        <section class="form-section">
+            <h2 id="form-title">Add Employee</h2>
+
+            <form id="employee-form">
+
+                <input type="hidden" id="employee-id">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="name">Employee Name</label>
+                        <input type="text" id="name" placeholder="Enter employee name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="position">Position</label>
+                        <input type="text" id="position" placeholder="Enter position" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <input type="text" id="department" placeholder="Enter department" required>
+                    </div>
+
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" class="btn-primary">Add Employee</button>
+                    <button type="button" id="cancel-btn" class="btn-secondary">
+                        Cancel
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <section class="employee-section">
+
+            <div class="section-header">
+                <h2>Employee Records</h2>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search employees..."
+                >
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Position</th>
+                            <th>Department</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="employee-list">
+                        <!-- Employees will appear here -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p id="message"></p>
+
+        </section>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

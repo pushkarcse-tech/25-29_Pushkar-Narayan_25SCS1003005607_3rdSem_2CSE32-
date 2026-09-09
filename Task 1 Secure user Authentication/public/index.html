@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure User Authentication</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f1f5f9;
+        }
+
+        .container {
+            width: 380px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .form {
+            display: none;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #334155;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .switch {
+            text-align: center;
+            margin-top: 18px;
+            color: #64748b;
+        }
+
+        .switch span {
+            color: #2563eb;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Secure Authentication</h1>
+        <p class="subtitle">Create an account or login securely</p>
+
+        <!-- SIGN UP -->
+        <div id="signupForm" class="form active">
+
+            <h2>Sign Up</h2>
+
+            <input
+                type="text"
+                id="signupName"
+                placeholder="Full Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="signupEmail"
+                placeholder="Email Address"
+                required
+            >
+
+            <input
+                type="password"
+                id="signupPassword"
+                placeholder="Password"
+                required
+            >
+
+            <button onclick="signup()">Create Account</button>
+
+            <p class="switch">
+                Already have an account?
+                <span onclick="showLogin()">Login</span>
+            </p>
+
+        </div>
+
+        <!-- LOGIN -->
+        <div id="loginForm" class="form">
+
+            <h2>Login</h2>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Email Address"
+                required
+            >
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Password"
+                required
+            >
+
+            <button onclick="login()">Login</button>
+
+            <p class="switch">
+                Don't have an account?
+                <span onclick="showSignup()">Sign Up</span>
+            </p>
+
+        </div>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script>
+
+        function showLogin() {
+            document.getElementById("signupForm").classList.remove("active");
+            document.getElementById("loginForm").classList.add("active");
+            document.getElementById("message").innerText = "";
+        }
+
+        function showSignup() {
+            document.getElementById("loginForm").classList.remove("active");
+            document.getElementById("signupForm").classList.add("active");
+            document.getElementById("message").innerText = "";
+        }
+
+        async function signup() {
+
+            const name = document.getElementById("signupName").value;
+            const email = document.getElementById("signupEmail").value;
+            const password = document.getElementById("signupPassword").value;
+
+            const message = document.getElementById("message");
+
+            if (!name || !email || !password) {
+                message.innerText = "Please fill all fields.";
+                return;
+            }
+
+            message.innerText = "Creating account...";
+
+            try {
+
+                const response = await fetch("/api/auth/signup", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password
+                    })
+                });
+
+                const data = await response.json();
+
+                message.innerText = data.message;
+
+                if (response.ok) {
+                    document.getElementById("signupName").value = "";
+                    document.getElementById("signupEmail").value = "";
+                    document.getElementById("signupPassword").value = "";
+
+                    setTimeout(showLogin, 1000);
+                }
+
+            } catch (error) {
+
+                message.innerText = "Server error. Please try again.";
+
+            }
+        }
+
+
+        async function login() {
+
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+
+            const message = document.getElementById("message");
+
+            if (!email || !password) {
+                message.innerText = "Please fill all fields.";
+                return;
+            }
+
+            message.innerText = "Logging in...";
+
+            try {
+
+                const response = await fetch("/api/auth/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                });
+
+                const data = await response.json();
+
+                message.innerText = data.message;
+
+                if (response.ok) {
+                    localStorage.setItem("token", data.token);
+                }
+
+            } catch (error) {
+
+                message.innerText = "Server error. Please try again.";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

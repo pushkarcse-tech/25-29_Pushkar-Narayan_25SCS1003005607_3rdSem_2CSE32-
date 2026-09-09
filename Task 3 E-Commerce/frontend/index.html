@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Local Store</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            X Mart
+        </div>
+
+        <div class="nav-links">
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+
+            <button id="cart-btn" class="cart-button">
+                🛒 Cart
+                <span id="cart-count">0</span>
+            </button>
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Welcome to X Mart</h1>
+
+            <p>
+                Discover quality products at affordable prices.
+            </p>
+
+            <a href="#products" class="hero-button">
+                Shop Now
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS SECTION
+    ========================== -->
+
+    <main id="products" class="products-section">
+
+        <div class="section-header">
+
+            <div>
+                <h2>Our Products</h2>
+
+                <p>
+                    Browse our latest collection
+                </p>
+            </div>
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search products..."
+                >
+
+                <select id="category-filter" title="Filter products by category">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- Products will be loaded here -->
+
+        <div id="product-list" class="product-grid">
+
+            <p class="loading">
+                Loading products...
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         ABOUT SECTION
+    ========================== -->
+
+    <section id="about" class="about-section">
+
+        <h2>About Local Store</h2>
+
+        <p>
+            Local Store is a simple e-commerce platform where
+            customers can browse products, view details and
+            add items to their shopping cart.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         CART SIDEBAR
+    ========================== -->
+
+    <div id="cart-overlay" class="cart-overlay"></div>
+
+    <aside id="cart-sidebar" class="cart-sidebar">
+
+        <div class="cart-header">
+
+            <h2>Your Cart</h2>
+
+            <button id="close-cart" class="close-cart">
+                ✕
+            </button>
+
+        </div>
+
+
+        <div id="cart-items" class="cart-items">
+
+            <p class="empty-cart">
+                Your cart is empty.
+            </p>
+
+        </div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+
+                <span>Total:</span>
+
+                <strong id="cart-total">
+                    ₹0
+                </strong>
+
+            </div>
+
+            <button id="checkout-btn" class="checkout-button">
+                Checkout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         PRODUCT MODAL
+    ========================== -->
+
+    <div id="product-modal" class="modal">
+
+        <div class="modal-content">
+
+            <button id="close-modal" class="modal-close">
+                ✕
+            </button>
+
+            <div id="modal-product"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
